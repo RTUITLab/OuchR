@@ -1,0 +1,9 @@
+[submodule "OuchR-Bot"]
+	path = OuchR-Bot
+	url = https://github.com/RTUITLab/OuchR-Bot.git
+[submodule "OuchR-Site"]
+	path = OuchR-Site
+	url = https://github.com/RTUITLab/OuchR-Site.git
+[submodule "OuchR-PdfParser"]
+	path = OuchR-PdfParser
+	url = https://github.com/RTUITLab/OuchR-PdfParser.git
