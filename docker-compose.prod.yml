@@ -1,0 +1,46 @@
+version: '3.8'
+
+x-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "200k"
+    max-file: "10"
+x-nginx-limits: &nginx-limits
+  resources:
+    limits:
+      cpus: "0.1"
+      memory: 50M
+
+
+services:
+  proxy:
+    deploy: *nginx-limits
+    logging: *logging
+    networks:
+      - net
+  site:
+    deploy: *nginx-limits
+    logging: *logging
+    networks:
+      - net
+  api-bot:
+    environment:
+      - VkBotOptions__GroupId=${VK_GROUP_ID?VK Group ID is required VK_GROUP_ID}
+      - VkBotOptions__GroupAccessToken=${VK_ACCESS_TOKEN?VK access token is required VK_ACCESS_TOKEN}
+      - CalendarOptions__GoogleCalendarUrl=${ICS_CALENDAR_URL?ICS URL is required ICS_CALENDAR_URL}
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 150M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+    networks:
+      - net
+  
+networks:
+  net:
+    driver: overlay

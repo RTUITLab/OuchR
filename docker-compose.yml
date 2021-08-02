@@ -1,36 +1,17 @@
 version: '3.8'
 
 services:
-  pdf-converter:
-    image: registry.rtuitlab.dev/rtuitlab/ouch-r/pdf-parser
-    networks:
-      - net
-
+  # pdf-converter:
+  #   image: registry.rtuitlab.dev/rtuitlab/ouch-r/pdf-parser
+  #   networks:
+  #     - net
   api-bot:
     image: registry.rtuitlab.dev/rtuitlab/ouch-r/bot
-    build: OuchR-Bot
     environment:
       - VkBotOptions__GroupId=${VK_GROUP_ID}
       - VkBotOptions__GroupAccessToken=${VK_ACCESS_TOKEN}
-    networks:
-      - net
+      - CalendarOptions__GoogleCalendarUrl=${ICS_CALENDAR_URL}
   site:
     image: registry.rtuitlab.dev/rtuitlab/ouch-r/site
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.docker.network=traefik-public
-        - traefik.constraint-label=traefik-public
-
-        - traefik.http.routers.olympiad-https.rule=Host(`ouchr.rtuitlab.dev`)
-        - traefik.http.routers.olympiad-https.entrypoints=https
-
-        - traefik.http.routers.olympiad-https.tls=true
-        - traefik.http.routers.olympiad-https.tls.certresolver=le
-        - traefik.http.services.olympiad.loadbalancer.server.port=80
-    networks: 
-      - net
-      - traefik-public
-networks:
-  net:
-    driver: overlay
+  proxy:
+    image: registry.rtuitlab.dev/rtuitlab/ouch-r/proxy

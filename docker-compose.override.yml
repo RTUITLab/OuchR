@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api-bot:
+    build: OuchR-Bot
+    environment: 
+      ASPNETCORE_ENVIRONMENT: Development
+      USE_MOCK_PROFILE_PARSER_SERVICE: 'true'
+    ports:
+      - 5000:5000
+  site:
+    build: OuchR-Site
+    ports:
+      - 5001:80
+  proxy:
+    build: Proxy
+    ports:
+      - 80:80
