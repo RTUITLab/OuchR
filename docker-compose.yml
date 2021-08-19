@@ -8,9 +8,8 @@ services:
   api-bot:
     image: registry.rtuitlab.dev/rtuitlab/ouch-r/bot
     environment:
-      - VkBotOptions__GroupId=${VK_GROUP_ID}
-      - VkBotOptions__GroupAccessToken=${VK_ACCESS_TOKEN}
-      - CalendarOptions__GoogleCalendarUrl=${ICS_CALENDAR_URL}
+      VkBotOptions__GroupId: ${VK_GROUP_ID}
+      VkBotOptions__GroupAccessToken: ${VK_ACCESS_TOKEN}
   site:
     image: registry.rtuitlab.dev/rtuitlab/ouch-r/site
   proxy:

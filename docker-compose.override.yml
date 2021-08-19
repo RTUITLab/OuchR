@@ -6,6 +6,7 @@ services:
     environment: 
       ASPNETCORE_ENVIRONMENT: Development
       USE_MOCK_PROFILE_PARSER_SERVICE: 'true'
+      CalendarOptions__GoogleCalendarUrl: ${ICS_CALENDAR_URL:-https://www.calend.ru/ical/ical-russtate.ics}
     ports:
       - 5000:5000
   site:
