@@ -32,5 +32,5 @@
 | Источники вакансий                      | ❌Нет                                                           | ❌Нет       | ❌Нет |
 | Анализ резюме на соответствие вакансиям | [OuchR-PdfParser](https://github.com/RTUITLab/OuchR-PdfParser) | ❌Нет       | ❌Нет |
 | Проверка результатов                    | ❌Нет                                                           | ❌Нет       | ❌Нет |
-| Message bus                             | -                                                              | ❌Нет       | ❌Нет |
+| Message bus                             | -                                                              | ❌Нет       | -    |
 | Proxy (техническая особенность)         | [OuchR](https://github.com/RTUITLab/OuchR)                     | ✔Да        | ❌Нет |
